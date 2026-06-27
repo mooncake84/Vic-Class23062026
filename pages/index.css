@@ -1,20 +1,20 @@
-/* Importa normalize, fuentes y bloques */
 @import url("../vendor/normalize.css");
-@import url("../fonts.css");
+@import url("../vendor/fonts.css");
 @import url("../blocks/top.css");
 @import url("../blocks/nav.css");
 @import url("../blocks/main.css");
-@import url("../blocks/user-info.css");
-@import url("../blocks/header.css"); /* opcional */
+@import url("../blocks/profile.css");
+@import url("../blocks/story.css");
+@import url("../blocks/post.css");
 
-/* Estilos globales con colores pastel cálidos */
+/* Globales */
 body {
-  max-width: 1000px;
-  min-width: 328px;
+  max-width: 700px;
+  min-width: 320px;
   margin: 0 auto;
   background-color: #fdf6f0; /* crema pastel */
   font-family: "Segoe UI", "Oswald", sans-serif;
-  padding: 0 20px;
+  padding: 0 15px;
   box-sizing: border-box;
   color: #4a3f3a;
 }
@@ -42,19 +42,17 @@ body {
 
 .modal__content {
   background-color: #fffaf5;
-  padding: 30px 40px;
-  border-radius: 20px;
-  max-width: 400px;
+  padding: 30px 35px;
+  border-radius: 24px;
+  max-width: 420px;
   width: 90%;
-  position: relative;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border: 1px solid #fadcdd;
 }
 
 .modal__close {
   position: absolute;
-  top: 10px;
+  top: 12px;
   right: 18px;
   font-size: 28px;
   font-weight: 300;
@@ -70,9 +68,34 @@ body {
   color: #d68b8b;
   font-weight: 400;
   margin-top: 0;
+  text-align: center;
 }
 
-.modal__content button {
+.modal__content label {
+  display: block;
+  margin: 15px 0 5px;
+  color: #8b6b6b;
+  font-weight: 300;
+}
+
+.modal__content input,
+.modal__content textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #f5e3df;
+  border-radius: 12px;
+  background: #fffcf9;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.modal__content input:focus,
+.modal__content textarea:focus {
+  outline: none;
+  border-color: #eab4b4;
+}
+
+.modal__content button[type="submit"] {
   background-color: #f4c2c2;
   color: #5a3e3e;
   border: none;
@@ -80,10 +103,40 @@ body {
   border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 20px;
+  width: 100%;
   transition: background 0.2s;
 }
 
-.modal__content button:hover {
+.modal__content button[type="submit"]:hover {
   background-color: #eab4b4;
+}
+/* Estilo para iconos SVG */
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  display: inline-block;
+  filter: invert(0.3) sepia(1) saturate(0.4) hue-rotate(340deg);
+  /* Esto les da un tono rosado/cálido, ajusta según prefieras */
+}
+
+/* En el top, el icono del coche es un poco más grande */
+.top__logo .icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* En las historias, los iconos dentro del círculo */
+.story__circle .icon {
+  width: 32px;
+  height: 32px;
+  filter: none; /* o un color más suave */
+}
+
+/* En los botones de acción de la publicación */
+.post__actions .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 }

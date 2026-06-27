@@ -4,58 +4,184 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/index.css" />
-    <link rel="stylesheet" href="fonts.css" />
-    <title>Perfil Saeyoung Choi</title>
+    <link rel="stylesheet" href="vendor/fonts.css" />
+    <title>707 · Perfil</title>
   </head>
   <body>
+    <!-- Barra superior -->
     <header class="top">
       <div class="top__logo">
-        <span class="top__icon"></span>
-        <h1>Document</h1>
+        <img
+          src="images/icons/icons8-mystic-messenger.svg"
+          alt="Coche"
+          class="icon"
+        />
+        <h1>Mystic</h1>
       </div>
       <div class="top__user">
-        <span>@707_king_Lol</span>
-        <img src="images/707.png" alt="Avatar" class="top__avatar" />
+        <span>@707_luciel</span>
+        <img
+          src="images/707.png"
+          alt="Avatar"
+          class="top__avatar"
+          id="avatarTrigger"
+        />
       </div>
     </header>
 
-    <!-- Navegación (opcional) -->
+    <!-- Navegación -->
     <nav class="nav">
       <ul class="nav__list">
         <li><a href="#" class="nav__link active">Perfil</a></li>
         <li><a href="#" class="nav__link">Publicaciones</a></li>
-        <li><a href="#" class="nav__link">Amigos</a></li>
+        <li><a href="#" class="nav__link">Historias</a></li>
       </ul>
     </nav>
 
     <!-- Contenido principal -->
     <main class="main">
-      <section class="user-profile">
-        <div class="user-profile__header">
+      <!-- Perfil (estilo Instagram) -->
+      <section class="profile">
+        <div class="profile__header">
           <img
-            src="images/saeyoung.jpg"
+            src="images/saeyoung_choi.jpg"
             alt="Foto de perfil"
-            class="user-profile__avatar"
+            class="profile__avatar"
           />
-          <div class="user-profile__info">
-            <h2 class="user-profile__name">Saeyoung choi</h2>
-            <p class="user-profile__username">@707_king_Lol</p>
-            <p class="user-profile__stats">14 publicacións</p>
+          <div class="profile__info">
+            <h2 class="profile__name">Saeyoung Choi</h2>
+            <p class="profile__username">@707_luciel</p>
+            <div class="profile__stats">
+              <span><strong>323</strong> posts</span>
+              <span><strong>46.5K</strong> seguidores</span>
+              <span><strong>332</strong> siguiendo</span>
+            </div>
           </div>
         </div>
-        <div class="user-profile__bio">
-          <p>Apasionado la tecnología y el LOol. Viviendo un día a la vez.</p>
+
+        <div class="profile__bio">
+          <p>🧡 hacker · amante de los coches · gatos 🐱</p>
+          <a href="#" class="profile__link">🔗 linktr.ee/707mystic</a>
+        </div>
+
+        <div class="profile__actions">
+          <button class="profile__btn profile__btn--follow">Seguir</button>
+          <button class="profile__btn profile__btn--message">Mensaje</button>
+        </div>
+
+        <!-- Historias destacadas -->
+        <div class="stories">
+          <div class="story">
+            <div class="story__circle">
+              <img
+                src="images/icons/car-svgrepo-com.svg"
+                alt="Coches"
+                class="icon"
+              />
+            </div>
+            <span>Coches</span>
+          </div>
+          <div class="story">
+            <div class="story__circle">
+              <img
+                src="images/icons/cat-face-svgrepo-com.svg"
+                alt="Gatos"
+                class="icon"
+              />
+            </div>
+            <span>Gatos</span>
+          </div>
+          <div class="story">
+            <div class="story__circle">
+              <img
+                src="images/icons/laptop-device-pc-svgrepo-com.svg"
+                alt="Hacking"
+                class="icon"
+              />
+            </div>
+            <span>Hacking</span>
+          </div>
+          <div class="story">
+            <div class="story__circle">
+              <img
+                src="images/icons/game-svgrepo-com.svg"
+                alt="Juegos"
+                class="icon"
+              />
+            </div>
+            <span>Juegos</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publicación destacada -->
+      <section class="post">
+        <div class="post__header">
+          <img
+            src="images/saeyoung_choi.jpg"
+            alt="Avatar"
+            class="post__avatar"
+          />
+          <span class="post__username">@707_luciel</span>
+          <span class="post__date">hace 2 horas</span>
+        </div>
+        <div class="post__image">
+          <img
+            src="images/mustang-dark-horse.jpg"
+            alt="Mustang Dark Horse 2024"
+          />
+        </div>
+        <div class="post__content">
+          <p class="post__text">
+            🏎️ Mi nuevo juguete: Mustang Dark Horse 2024. <br />
+            Velocidad, estilo y tecnología. Como debe ser.
+          </p>
+          <div class="post__actions">
+            <span>
+              <img
+                src="images/icons/heart-svgrepo-com.svg"
+                alt="Me gusta"
+                class="icon"
+              />
+              1.234
+            </span>
+            <span>
+              <img
+                src="images/icons/comment-svgrepo-com.svg"
+                alt="Comentarios"
+                class="icon"
+              />
+              89
+            </span>
+            <span>
+              <img
+                src="images/icons/arrow-up-right-from-square-svgrepo-com.svg"
+                alt="Compartir"
+                class="icon"
+              />
+              56
+            </span>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- POP‑UP (modal) -->
-    <div class="modal" id="popup">
+    <!-- POP‑UP con el contenido solicitado -->
+    <div class="modal modal--hidden" id="editPopup">
       <div class="modal__content">
         <span class="modal__close" id="closePopup">&times;</span>
-        <h2>¡Bienvenido de vuelta!</h2>
-        <p>Has iniciado sesión como <strong>@707_king_Lol</strong>.</p>
-        <button id="closePopupBtn">Aceptar</button>
+        <h2>Editar Perfil</h2>
+        <form id="editForm">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" value="Saeyoung Choi" />
+
+          <label for="bio">Descripción</label>
+          <textarea id="bio" rows="3">
+🧡 hacker · amante de los coches · gatos 🐱</textarea
+          >
+
+          <button type="submit" id="saveBtn">Save</button>
+        </form>
       </div>
     </div>
 

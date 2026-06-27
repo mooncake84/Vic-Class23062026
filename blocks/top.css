@@ -2,46 +2,45 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fce4e0; /* rosa pastel */
-  padding: 10px 25px;
-  border-radius: 30px 30px 15px 15px;
-  margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  background: #fce4e0;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .top__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .top__icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .top__logo h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 300;
   color: #7a5a5a;
-  letter-spacing: 1px;
 }
 
 .top__user {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .top__user span {
   font-weight: 300;
   color: #8b6b6b;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .top__avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #fadcdd;
   object-fit: cover;
