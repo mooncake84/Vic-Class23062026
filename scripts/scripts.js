@@ -93,7 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "ropa",
       label: "Ropa",
       icon: "images/icons/clothes-shirt-svgrepo-com.svg",
-      images: ["images/maid_707.jpg"],
+      images: [
+        "images/maid_707.jpg",
+        "images/seven_green.webp",
+        "images/elegant_clothes.jpg",
+      ],
     },
   ];
 
