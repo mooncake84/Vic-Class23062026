@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ============================================================
-  // 1. POPUP DE EDICIÓN DE PERFIL (se abre con el avatar del top)
-  // ============================================================
   const modalEdit = document.getElementById("editPopup");
   const closeEditBtn = document.getElementById("closePopup");
   const avatarTrigger = document.getElementById("avatarTrigger");
@@ -39,13 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     closeEditModal();
   });
 
-  // ============================================================
-  // 2. GENERAR HISTORIAS DINÁMICAMENTE (con múltiples imágenes)
-  // ============================================================
   const storiesContainer = document.getElementById("storiesContainer");
   const storyTemplate = document.getElementById("story-template");
 
-  // Datos de historias (cada una puede tener varias imágenes)
   const storiesData = [
     {
       type: "coches",
@@ -97,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // Generar cada historia en el DOM
   storiesData.forEach(function (story) {
     const clone = storyTemplate.content.cloneNode(true);
     const storyDiv = clone.querySelector(".story");
@@ -112,9 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
     storiesContainer.appendChild(clone);
   });
 
-  // ============================================================
-  // 3. POPUP DE HISTORIAS (muestra las imágenes)
-  // ============================================================
   const modalStory = document.getElementById("storyPopup");
   const closeStoryBtn = document.getElementById("closeStoryPopup");
   const storyContent = document.getElementById("storyContent");
@@ -132,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Delegación: al hacer clic en una historia, mostrar sus imágenes
   document.addEventListener("click", function (e) {
     const storyDiv = e.target.closest(".story");
     if (!storyDiv) return;
@@ -141,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return s.type === type;
     });
     if (storyData) {
-      // Construir HTML con todas las imágenes
       let html = "";
       storyData.images.forEach(function (imgSrc) {
         html += '<img src="' + imgSrc + '" alt="' + storyData.label + '" />';
@@ -151,9 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ============================================================
-  // 4. POPUP PARA NUEVA PUBLICACIÓN (con carga de imagen local)
-  // ============================================================
   const modalPost = document.getElementById("newPostPopup");
   const closePostBtn = document.getElementById("closePostPopup");
   const addPostBtn = document.getElementById("addPostBtn");
