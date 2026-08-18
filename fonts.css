@@ -1,0 +1,13 @@
+/* ===== Fuentes ===== */
+/* Opción 1: Google Fonts (recomendado para evitar errores 404) */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+/* Opción 2: Fuente local (descomentar si tienes el archivo .ttf) */
+/*
+@font-face {
+  font-family: 'Oswald';
+  src: url('vendor/fonts/Aa Oswald-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+*/

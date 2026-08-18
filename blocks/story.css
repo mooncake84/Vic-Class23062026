@@ -1,3 +1,4 @@
+/* ===== HISTORIAS ===== */
 .stories {
   display: flex;
   gap: 18px;
@@ -5,7 +6,6 @@
   overflow-x: auto;
   padding: 4px 0 8px;
 }
-
 .story {
   display: flex;
   flex-direction: column;
@@ -14,8 +14,8 @@
   color: #8b6b6b;
   gap: 4px;
   flex-shrink: 0;
+  cursor: pointer;
 }
-
 .story__circle {
   width: 60px;
   height: 60px;
@@ -24,7 +24,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
   border: 2px solid #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.story__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: contain;
+}
+.story__label {
+  font-size: 0.7rem;
+  color: #8b6b6b;
+  text-align: center;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

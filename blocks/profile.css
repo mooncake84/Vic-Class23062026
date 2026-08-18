@@ -1,3 +1,4 @@
+/* ===== PERFIL ===== */
 .profile {
   background: #fffbf8;
   padding: 20px 20px 15px;
@@ -5,114 +6,91 @@
   border: 1px solid #f5e3df;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
-
 .profile__header {
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .profile__avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #fadcdd;
   object-fit: cover;
   border: 3px solid #fce4e0;
 }
-
 .profile__info {
   flex: 1;
 }
-
 .profile__name {
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
   color: #5a3e3e;
 }
-
 .profile__username {
   font-size: 1rem;
   color: #b39286;
   margin: 2px 0 8px;
 }
-
 .profile__stats {
   display: flex;
   gap: 18px;
   font-size: 0.9rem;
   color: #6b5550;
 }
-
 .profile__stats strong {
   color: #4a3f3a;
 }
-
 .profile__bio {
   margin: 15px 0 12px;
   padding: 10px 0;
   border-top: 1px solid #f5e3df;
   border-bottom: 1px solid #f5e3df;
 }
-
 .profile__bio p {
   margin: 4px 0;
   color: #6b5550;
   font-size: 0.95rem;
 }
-
 .profile__link {
   color: #d68b8b;
-  text-decoration: none;
   font-size: 0.9rem;
 }
-
 .profile__actions {
   display: flex;
   gap: 10px;
   margin: 12px 0 8px;
   flex-wrap: wrap;
 }
-
 .profile__btn {
   flex: 1;
   padding: 8px 0;
   border: none;
   border-radius: 30px;
   font-size: 0.95rem;
-  cursor: pointer;
   font-weight: 300;
-  transition:
-    background 0.2s,
-    transform 0.1s;
+  transition: background 0.2s;
 }
-
 .profile__btn--follow {
   background-color: #f4c2c2;
   color: #5a3e3e;
 }
-
 .profile__btn--follow:hover {
   background-color: #eab4b4;
 }
-
 .profile__btn--message {
   background-color: #f5e3df;
   color: #6b5550;
 }
-
 .profile__btn--message:hover {
   background-color: #edcec8;
 }
-
-.profile__btn--edit {
+.profile__btn--add-post {
   background-color: #fff6f0;
   color: #8b6b6b;
   border: 1px solid #f5e3df;
 }
-
-.profile__btn--edit:hover {
+.profile__btn--add-post:hover {
   background-color: #fce4e0;
 }

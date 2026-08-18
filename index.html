@@ -3,25 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos -->
     <link rel="stylesheet" href="pages/index.css" />
-    <link rel="stylesheet" href="vendor/fonts.css" />
+    <link rel="stylesheet" href="fonts.css" />
     <title>707 · Perfil</title>
   </head>
   <body>
-    <!-- Barra superior -->
+    <!-- ===== BARRA SUPERIOR ===== -->
     <header class="top">
       <div class="top__logo">
-        <img
-          src="images/icons/icons8-mystic-messenger.svg"
-          alt="Coche"
-          class="icon"
-        />
+        <img src="images/image_logo.jpg" alt="Coche" class="icon" />
         <h1>Mystic</h1>
       </div>
       <div class="top__user">
         <span>@707_luciel</span>
         <img
-          src="images/707.png"
+          src="images/saeyoung_choi.jpg"
           alt="Avatar"
           class="top__avatar"
           id="avatarTrigger"
@@ -29,7 +26,7 @@
       </div>
     </header>
 
-    <!-- Navegación -->
+    <!-- ===== NAVEGACIÓN ===== -->
     <nav class="nav">
       <ul class="nav__list">
         <li><a href="#" class="nav__link active">Perfil</a></li>
@@ -38,9 +35,9 @@
       </ul>
     </nav>
 
-    <!-- Contenido principal -->
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <main class="main">
-      <!-- Perfil (estilo Instagram) -->
+      <!-- ===== PERFIL ===== -->
       <section class="profile">
         <div class="profile__header">
           <img
@@ -60,131 +57,184 @@
         </div>
 
         <div class="profile__bio">
-          <p>🧡 hacker · amante de los coches · gatos 🐱</p>
-          <a href="#" class="profile__link">🔗 linktr.ee/707mystic</a>
+          <p>hacker · amante de los coches · gatos</p>
+          <p>“La vida es un juego, y yo soy el mejor jugador.”</p>
+          <a href="#" class="profile__link"> linktr.ee/707mystic</a>
         </div>
 
         <div class="profile__actions">
           <button class="profile__btn profile__btn--follow">Seguir</button>
           <button class="profile__btn profile__btn--message">Mensaje</button>
+          <!-- Botón para agregar publicación (abre popup) -->
+          <button class="profile__btn profile__btn--add-post" id="addPostBtn">
+            + Publicar
+          </button>
         </div>
 
-        <!-- Historias destacadas -->
-        <div class="stories">
-          <div class="story">
+        <!-- Historias destacadas (contenedor dinámico) -->
+        <div class="stories" id="storiesContainer"></div>
+
+        <!-- Template para cada historia -->
+        <template id="story-template">
+          <div class="story" data-story="">
             <div class="story__circle">
-              <img
-                src="images/icons/car-svgrepo-com.svg"
-                alt="Coches"
-                class="icon"
-              />
+              <img class="story__icon" src="" alt="" />
             </div>
-            <span>Coches</span>
+            <span class="story__label"></span>
           </div>
-          <div class="story">
-            <div class="story__circle">
-              <img
-                src="images/icons/cat-face-svgrepo-com.svg"
-                alt="Gatos"
-                class="icon"
-              />
-            </div>
-            <span>Gatos</span>
-          </div>
-          <div class="story">
-            <div class="story__circle">
-              <img
-                src="images/icons/laptop-device-pc-svgrepo-com.svg"
-                alt="Hacking"
-                class="icon"
-              />
-            </div>
-            <span>Hacking</span>
-          </div>
-          <div class="story">
-            <div class="story__circle">
-              <img
-                src="images/icons/game-svgrepo-com.svg"
-                alt="Juegos"
-                class="icon"
-              />
-            </div>
-            <span>Juegos</span>
-          </div>
-        </div>
+        </template>
       </section>
 
-      <!-- Publicación destacada -->
-      <section class="post">
-        <div class="post__header">
-          <img
-            src="images/saeyoung_choi.jpg"
-            alt="Avatar"
-            class="post__avatar"
-          />
-          <span class="post__username">@707_luciel</span>
-          <span class="post__date">hace 2 horas</span>
-        </div>
-        <div class="post__image">
-          <img
-            src="images/mustang-dark-horse.jpg"
-            alt="Mustang Dark Horse 2024"
-          />
-        </div>
-        <div class="post__content">
-          <p class="post__text">
-            🏎️ Mi nuevo juguete: Mustang Dark Horse 2024. <br />
-            Velocidad, estilo y tecnología. Como debe ser.
-          </p>
-          <div class="post__actions">
-            <span>
-              <img
-                src="images/icons/heart-svgrepo-com.svg"
-                alt="Me gusta"
-                class="icon"
-              />
-              1.234
-            </span>
-            <span>
-              <img
-                src="images/icons/comment-svgrepo-com.svg"
-                alt="Comentarios"
-                class="icon"
-              />
-              89
-            </span>
-            <span>
-              <img
-                src="images/icons/arrow-up-right-from-square-svgrepo-com.svg"
-                alt="Compartir"
-                class="icon"
-              />
-              56
-            </span>
+      <!-- ===== CONTENEDOR DE PUBLICACIONES ===== -->
+      <div id="postsContainer">
+        <!-- Publicación de ejemplo -->
+        <section class="post">
+          <div class="post__header">
+            <img
+              src="images/saeyoung_choi.jpg"
+              alt="Avatar"
+              class="post__avatar"
+            />
+            <span class="post__username">@707_luciel</span>
+            <span class="post__date">hace 2 horas</span>
           </div>
-        </div>
-      </section>
+          <div class="post__image">
+            <img
+              src="images/mustang-dark-horse.jpg"
+              alt="Mustang Dark Horse 2024"
+            />
+          </div>
+          <div class="post__content">
+            <p class="post__text">
+              Mi nuevo juguete: Mustang Dark Horse 2024. Velocidad, estilo y
+              tecnología. Como debe ser.
+            </p>
+            <div class="post__actions">
+              <span
+                ><img
+                  src="images/icons/heart-svgrepo-com.svg"
+                  alt="Me gusta"
+                  class="icon"
+                />
+                1.234</span
+              >
+              <span
+                ><img
+                  src="images/icons/comment-svgrepo-com.svg"
+                  alt="Comentarios"
+                  class="icon"
+                />
+                89</span
+              >
+              <span
+                ><img
+                  src="images/icons/arrow-up-right-from-square-svgrepo-com.svg"
+                  alt="Compartir"
+                  class="icon"
+                />
+                56</span
+              >
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
-    <!-- POP‑UP con el contenido solicitado -->
+    <!-- ===== POPUP DE EDICIÓN DE PERFIL ===== -->
     <div class="modal modal--hidden" id="editPopup">
       <div class="modal__content">
-        <span class="modal__close" id="closePopup">&times;</span>
-        <h2>Editar Perfil</h2>
+        <button class="modal__close-btn" id="closePopup" aria-label="Cerrar">
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="#8b6b6b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2>Editar perfil</h2>
         <form id="editForm">
           <label for="name">Nombre</label>
           <input type="text" id="name" value="Saeyoung Choi" />
-
           <label for="bio">Descripción</label>
           <textarea id="bio" rows="3">
-🧡 hacker · amante de los coches · gatos 🐱</textarea
+ hacker · amante de los coches · gatos </textarea
           >
-
-          <button type="submit" id="saveBtn">Save</button>
+          <button type="submit" class="save-btn">Guardar</button>
         </form>
       </div>
     </div>
 
+    <!-- ===== POPUP DE HISTORIAS ===== -->
+    <div class="modal modal--hidden" id="storyPopup">
+      <div class="modal__content story-modal">
+        <button
+          class="modal__close-btn"
+          id="closeStoryPopup"
+          aria-label="Cerrar"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="#8b6b6b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <div id="storyContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== POPUP PARA NUEVA PUBLICACIÓN ===== -->
+    <div class="modal modal--hidden" id="newPostPopup">
+      <div class="modal__content">
+        <button
+          class="modal__close-btn"
+          id="closePostPopup"
+          aria-label="Cerrar"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="#8b6b6b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2>Nueva publicación</h2>
+        <form id="newPostForm">
+          <label for="postImage">Imagen</label>
+          <input type="file" id="postImage" accept="image/*" required />
+          <label for="postText">Descripción</label>
+          <textarea
+            id="postText"
+            rows="3"
+            placeholder="Escribe algo..."
+          ></textarea>
+          <button type="submit" class="save-btn">Publicar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
     <script src="scripts/scripts.js"></script>
   </body>
 </html>
