@@ -1,7 +1,3 @@
-// ============================================================
-//  scripts.js - Toda la lógica de la página
-// ============================================================
-
 document.addEventListener("DOMContentLoaded", function () {
   // ============================================================
   // 1. POPUP DE EDICIÓN DE PERFIL (se abre con el avatar del top)
