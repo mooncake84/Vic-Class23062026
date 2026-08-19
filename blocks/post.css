@@ -54,9 +54,9 @@
 .post__image img {
   width: 100%;
   display: block;
-  background-color: #f5e3df;
+  background: linear-gradient(135deg, #fce4e0, #fadcdd);
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .post__content {

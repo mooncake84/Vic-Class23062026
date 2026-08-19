@@ -1,0 +1,87 @@
+/* ===== BARRA LATERAL ===== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sidebar__widget {
+  background: #fffbf8;
+  border-radius: 30px;
+  border: 1px solid #f5e3df;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar__widget h3 {
+  font-weight: 400;
+  color: #7a5a5a;
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #f5e3df;
+  padding-bottom: 8px;
+}
+
+/* ===== CLIMA ===== */
+.sidebar__weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.weather__temp {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #d68b8b;
+}
+.weather__desc {
+  font-size: 0.95rem;
+  color: #8b6b6b;
+}
+
+/* ===== ACTIVIDAD ===== */
+.sidebar__activity {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar__activity li {
+  padding: 6px 0;
+  color: #6b5550;
+  font-weight: 300;
+  border-bottom: 1px dashed #f5e3df;
+}
+.sidebar__activity li:last-child {
+  border-bottom: none;
+}
+
+/* ===== SUGERENCIAS ===== */
+.sidebar__suggestion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5e3df;
+}
+.sidebar__suggestion:last-child {
+  border-bottom: none;
+}
+
+.suggestion__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fce4e0;
+}
+
+.suggestion__name {
+  margin: 0;
+  font-weight: 400;
+  color: #5a3e3e;
+  font-size: 0.95rem;
+}
+.suggestion__username {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #b39286;
+}

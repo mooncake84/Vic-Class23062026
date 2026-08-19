@@ -8,6 +8,7 @@
 @import url("../blocks/post.css");
 @import url("../blocks/popup.css");
 @import url("../blocks/footer.css");
+@import url("../blocks/sidebar.css");
 
 /* ===== ESTILOS GLOBALES ===== */
 body {
@@ -93,7 +94,7 @@ body {
   }
   .main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr; /* perfil + posts ocupan 2/3, sidebar 1/3 */
     gap: 30px;
   }
   .profile {
@@ -105,10 +106,69 @@ body {
   .posts-section {
     grid-column: 1 / 2;
   }
+  .sidebar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4; /* ocupa todo el alto desde perfil hasta posts */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 1200px;
+    padding: 0 60px;
+  }
+  .main {
+    grid-template-columns: 2.5fr 1.2fr;
+    gap: 40px;
+  }
 }
 @media (max-width: 767px) {
   .main {
     display: flex;
     flex-direction: column;
   }
+}
+
+/* Efecto hover en tarjetas */
+.profile,
+.add-post-section,
+.post,
+.sidebar__widget {
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s;
+}
+.profile:hover,
+.add-post-section:hover,
+.post:hover,
+.sidebar__widget:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Decoración sutil en el header */
+.top {
+  background: linear-gradient(135deg, #fce4e0, #fadcdd);
+}
+
+/* Botones con animación */
+.profile__btn,
+.add-post__btn,
+.footer__btn {
+  transition: all 0.2s;
+}
+.profile__btn:active,
+.add-post__btn:active,
+.footer__btn:active {
+  transform: scale(0.96);
+}
+
+/* Separador decorativo en el perfil */
+.profile__bio {
+  background: linear-gradient(to right, transparent, #f5e3df, transparent);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
