@@ -5,29 +5,52 @@
   border: 1px solid #f5e3df;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  margin-bottom: 20px;
+  position: relative;
 }
+
 .post__header {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
 }
+
 .post__avatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  background-color: #fadcdd;
   object-fit: cover;
 }
+
 .post__username {
   font-weight: 400;
   color: #5a3e3e;
   font-size: 0.95rem;
 }
+
 .post__date {
   margin-left: auto;
   color: #b39286;
   font-size: 0.8rem;
 }
+
+/* Botón de eliminar (tres puntos) */
+.post__delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #b39286;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.post__delete-btn:hover {
+  color: #d68b8b;
+}
+
 .post__image img {
   width: 100%;
   display: block;
@@ -35,23 +58,60 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
 .post__content {
   padding: 12px 16px 16px;
 }
+
 .post__text {
   margin: 0 0 10px;
   color: #4a3f3a;
   font-size: 0.95rem;
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* límite de 3 líneas */
+  -webkit-box-orient: vertical;
 }
+.post__text--expanded {
+  -webkit-line-clamp: unset;
+}
+.post__text-more {
+  color: #b39286;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 .post__actions {
   display: flex;
   gap: 18px;
   color: #8b6b6b;
   font-size: 0.9rem;
+  align-items: center;
 }
-.post__actions .icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
+
+.post__like-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #8b6b6b;
+  font-size: 0.9rem;
+  padding: 0;
+  transition: color 0.2s;
+}
+.post__like-btn:hover {
+  color: #d68b8b;
+}
+.post__like-btn.liked {
+  color: #d68b8b;
+}
+.post__like-btn.liked .icon {
+  filter: invert(0.4) sepia(1) saturate(5) hue-rotate(340deg);
 }

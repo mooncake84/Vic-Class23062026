@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Estilos -->
     <link rel="stylesheet" href="pages/index.css" />
     <link rel="stylesheet" href="fonts.css" />
     <title>707 · Perfil</title>
@@ -13,7 +12,7 @@
     <header class="top">
       <div class="top__logo">
         <img src="images/image_logo.jpg" alt="Coche" class="icon" />
-        <h1>Mystic Messenger Ig</h1>
+        <h1>Mystic</h1>
       </div>
       <div class="top__user">
         <span>@707_luciel</span>
@@ -57,24 +56,21 @@
         </div>
 
         <div class="profile__bio">
-          <p>hacker · amante de los coches · gatos</p>
+          <p>🧡 hacker · amante de los coches · gatos 🐱</p>
           <p>“La vida es un juego, y yo soy el mejor jugador.”</p>
-          <a href="#" class="profile__link"> linktr.ee/707mystic</a>
+          <a href="#" class="profile__link">🔗 linktr.ee/707mystic</a>
         </div>
 
         <div class="profile__actions">
           <button class="profile__btn profile__btn--follow">Seguir</button>
           <button class="profile__btn profile__btn--message">Mensaje</button>
-          <!-- Botón para agregar publicación (abre popup) -->
-          <button class="profile__btn profile__btn--add-post" id="addPostBtn">
-            + Publicar
-          </button>
         </div>
 
-        <!-- Historias destacadas (contenedor dinámico) -->
-        <div class="stories" id="storiesContainer"></div>
+        <!-- ===== HISTORIAS (responsivas) ===== -->
+        <div class="stories" id="storiesContainer">
+          <!-- Generadas por JS -->
+        </div>
 
-        <!-- Template para cada historia -->
         <template id="story-template">
           <div class="story" data-story="">
             <div class="story__circle">
@@ -85,60 +81,37 @@
         </template>
       </section>
 
-      <!-- ===== CONTENEDOR DE PUBLICACIONES ===== -->
-      <div id="postsContainer">
-        <!-- Publicación de ejemplo -->
-        <section class="post">
-          <div class="post__header">
-            <img
-              src="images/saeyoung_choi.jpg"
-              alt="Avatar"
-              class="post__avatar"
-            />
-            <span class="post__username">@707_luciel</span>
-            <span class="post__date">hace 2 horas</span>
-          </div>
-          <div class="post__image">
-            <img
-              src="images/mustang-dark-horse.jpg"
-              alt="Mustang Dark Horse 2024"
-            />
-          </div>
-          <div class="post__content">
-            <p class="post__text">
-              Mi nuevo juguete: Mustang Dark Horse 2024. Velocidad, estilo y
-              tecnología. Como debe ser.
-            </p>
-            <div class="post__actions">
-              <span
-                ><img
-                  src="images/icons/heart-svgrepo-com.svg"
-                  alt="Me gusta"
-                  class="icon"
-                />
-                1.234</span
-              >
-              <span
-                ><img
-                  src="images/icons/comment-svgrepo-com.svg"
-                  alt="Comentarios"
-                  class="icon"
-                />
-                89</span
-              >
-              <span
-                ><img
-                  src="images/icons/arrow-up-right-from-square-svgrepo-com.svg"
-                  alt="Compartir"
-                  class="icon"
-                />
-                56</span
-              >
-            </div>
-          </div>
-        </section>
-      </div>
+      <!-- ===== FORMULARIO PARA AGREGAR PUBLICACIÓN (nuevo) ===== -->
+      <section class="add-post-section">
+        <h3 class="add-post__title">Agregar nueva publicación</h3>
+        <div class="add-post__form">
+          <input
+            type="text"
+            id="postImageUrl"
+            placeholder="URL de la imagen"
+            class="add-post__input"
+          />
+          <input
+            type="text"
+            id="postCaption"
+            placeholder="Texto de la publicación"
+            class="add-post__input"
+          />
+          <button id="addPostBtn" class="add-post__btn">+ Agregar</button>
+        </div>
+        <div id="addPostMessage" class="add-post__message"></div>
+      </section>
+
+      <!-- ===== PUBLICACIONES ===== -->
+      <section class="posts-section" id="postsContainer">
+        <!-- Las publicaciones se generan desde JS -->
+      </section>
     </main>
+
+    <!-- ===== FOOTER (ahora solo el copyright) ===== -->
+    <footer class="footer">
+      <p class="footer__copy">© 2026 · Saeyoung Choi · Mystic Messenger</p>
+    </footer>
 
     <!-- ===== POPUP DE EDICIÓN DE PERFIL ===== -->
     <div class="modal modal--hidden" id="editPopup">
@@ -164,7 +137,7 @@
           <input type="text" id="name" value="Saeyoung Choi" />
           <label for="bio">Descripción</label>
           <textarea id="bio" rows="3">
- hacker · amante de los coches · gatos </textarea
+🧡 hacker · amante de los coches · gatos 🐱</textarea
           >
           <button type="submit" class="save-btn">Guardar</button>
         </form>
@@ -194,43 +167,6 @@
           </svg>
         </button>
         <div id="storyContent"></div>
-      </div>
-    </div>
-
-    <!-- ===== POPUP PARA NUEVA PUBLICACIÓN ===== -->
-    <div class="modal modal--hidden" id="newPostPopup">
-      <div class="modal__content">
-        <button
-          class="modal__close-btn"
-          id="closePostPopup"
-          aria-label="Cerrar"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            fill="none"
-            stroke="#8b6b6b"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-        <h2>Nueva publicación</h2>
-        <form id="newPostForm">
-          <label for="postImage">Imagen</label>
-          <input type="file" id="postImage" accept="image/*" required />
-          <label for="postText">Descripción</label>
-          <textarea
-            id="postText"
-            rows="3"
-            placeholder="Escribe algo..."
-          ></textarea>
-          <button type="submit" class="save-btn">Publicar</button>
-        </form>
       </div>
     </div>
 

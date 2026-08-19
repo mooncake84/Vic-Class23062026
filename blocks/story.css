@@ -1,11 +1,13 @@
 /* ===== HISTORIAS ===== */
 .stories {
   display: flex;
+  flex-wrap: wrap; /* ← sin scroll horizontal, envuelve */
   gap: 18px;
   margin-top: 15px;
-  overflow-x: auto;
   padding: 4px 0 8px;
+  justify-content: flex-start;
 }
+
 .story {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,9 @@
   gap: 4px;
   flex-shrink: 0;
   cursor: pointer;
+  width: 70px; /* tamaño fijo para alineación */
 }
+
 .story__circle {
   width: 60px;
   height: 60px;
@@ -27,12 +31,14 @@
   border: 2px solid #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
+
 .story__icon {
   width: 32px;
   height: 32px;
   display: block;
   object-fit: contain;
 }
+
 .story__label {
   font-size: 0.7rem;
   color: #8b6b6b;

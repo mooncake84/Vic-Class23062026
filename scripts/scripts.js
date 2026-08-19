@@ -1,41 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modalEdit = document.getElementById("editPopup");
-  const closeEditBtn = document.getElementById("closePopup");
+  // ============================================================
+  // 1. POPUP DE EDICIÓN DE PERFIL (avatar del top)
+  // ============================================================
+  const modal = document.getElementById("editPopup");
+  const closeBtn = document.getElementById("closePopup");
   const avatarTrigger = document.getElementById("avatarTrigger");
   const editForm = document.getElementById("editForm");
 
-  // Abrir
   avatarTrigger.addEventListener("click", function () {
-    modalEdit.classList.remove("modal--hidden");
+    modal.classList.remove("modal--hidden");
   });
 
-  // Cerrar
-  function closeEditModal() {
-    modalEdit.classList.add("modal--hidden");
+  function closeModal() {
+    modal.classList.add("modal--hidden");
   }
-  closeEditBtn.addEventListener("click", closeEditModal);
-  modalEdit.addEventListener("click", function (e) {
-    if (e.target === modalEdit) closeEditModal();
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) closeModal();
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modalEdit.classList.contains("modal--hidden")) {
-      closeEditModal();
+    if (e.key === "Escape" && !modal.classList.contains("modal--hidden")) {
+      closeModal();
     }
   });
 
-  // Guardar cambios
   editForm.addEventListener("submit", function (e) {
     e.preventDefault();
     const name =
       document.getElementById("name").value.trim() || "Saeyoung Choi";
     const bio =
       document.getElementById("bio").value.trim() ||
-      " hacker · amante de los coches · gatos ";
+      "🧡 hacker · amante de los coches · gatos 🐱";
     document.querySelector(".profile__name").textContent = name;
     document.querySelector(".profile__bio p:first-child").textContent = bio;
-    closeEditModal();
+    closeModal();
   });
 
+  // ============================================================
+  // 2. GENERAR HISTORIAS DINÁMICAMENTE
+  // ============================================================
   const storiesContainer = document.getElementById("storiesContainer");
   const storyTemplate = document.getElementById("story-template");
 
@@ -44,79 +47,85 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "coches",
       label: "Coches",
       icon: "images/icons/car-svgrepo-com.svg",
-      images: [
-        "images/707-car.jpg",
-        "images/mustang-dark-horse.jpg",
-        "images/honda nsx 1993.jpg",
-      ],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/707-car.jpg" style="width:45%; border-radius:16px;" />
+        <img src="images/honda_nsx_1993.jpg" style="width:45%; border-radius:16px;" />
+        <img src="images/mustang-dark-horse.jpg" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
     {
       type: "gatos",
       label: "Gatos",
       icon: "images/icons/cat-face-svgrepo-com.svg",
-      images: [
-        "images/elizabeth.jpg",
-        "images/images_eli.jpg",
-        "images/elizabeth.jpg",
-      ],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/elizabeth.jpg" style="width:45%; border-radius:16px;" />
+        <img src="images/images_eli.jpg" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
     {
       type: "hacking",
       label: "Hacking",
       icon: "images/icons/laptop-device-pc-svgrepo-com.svg",
-      images: ["images/hacking.webp", "images/707.png"],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/hacking.webp" style="width:45%; border-radius:16px;" />
+        <img src="images/707.png" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
     {
       type: "juegos",
       label: "Juegos",
       icon: "images/icons/game-svgrepo-com.svg",
-      images: ["images/lolol.jpg", "images/707.png"],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/lolol.jpg" style="width:45%; border-radius:16px;" />
+        <img src="images/707.png" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
     {
       type: "comida",
       label: "Comida",
       icon: "images/icons/food-wine-cheese-bread-national-culture-paris-svgrepo-com.svg",
-      images: ["images/chips.jpg"],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/chips.jpg" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
     {
       type: "ropa",
       label: "Ropa",
       icon: "images/icons/clothes-shirt-svgrepo-com.svg",
-      images: [
-        "images/maid_707.jpg",
-        "images/seven_green.webp",
-        "images/elegant_clothes.jpg",
-      ],
+      content: `<div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <img src="images/maid_707.jpg" style="width:45%; border-radius:16px;" />
+      </div>`,
     },
   ];
 
-  storiesData.forEach(function (story) {
+  storiesData.forEach((story) => {
     const clone = storyTemplate.content.cloneNode(true);
     const storyDiv = clone.querySelector(".story");
     const iconImg = clone.querySelector(".story__icon");
     const labelSpan = clone.querySelector(".story__label");
-
     storyDiv.dataset.story = story.type;
     iconImg.src = story.icon;
     iconImg.alt = story.label;
     labelSpan.textContent = story.label;
-
     storiesContainer.appendChild(clone);
   });
 
-  const modalStory = document.getElementById("storyPopup");
+  // ============================================================
+  // 3. POPUP DE HISTORIAS (delegación)
+  // ============================================================
+  const storyPopup = document.getElementById("storyPopup");
   const closeStoryBtn = document.getElementById("closeStoryPopup");
   const storyContent = document.getElementById("storyContent");
 
   function closeStoryModal() {
-    modalStory.classList.add("modal--hidden");
+    storyPopup.classList.add("modal--hidden");
   }
   closeStoryBtn.addEventListener("click", closeStoryModal);
-  modalStory.addEventListener("click", function (e) {
-    if (e.target === modalStory) closeStoryModal();
+  storyPopup.addEventListener("click", function (e) {
+    if (e.target === storyPopup) closeStoryModal();
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modalStory.classList.contains("modal--hidden")) {
+    if (e.key === "Escape" && !storyPopup.classList.contains("modal--hidden")) {
       closeStoryModal();
     }
   });
@@ -125,93 +134,219 @@ document.addEventListener("DOMContentLoaded", function () {
     const storyDiv = e.target.closest(".story");
     if (!storyDiv) return;
     const type = storyDiv.dataset.story;
-    const storyData = storiesData.find(function (s) {
-      return s.type === type;
-    });
+    const storyData = storiesData.find((s) => s.type === type);
     if (storyData) {
-      let html = "";
-      storyData.images.forEach(function (imgSrc) {
-        html += '<img src="' + imgSrc + '" alt="' + storyData.label + '" />';
-      });
-      storyContent.innerHTML = html;
-      modalStory.classList.remove("modal--hidden");
+      storyContent.innerHTML = storyData.content;
+      storyPopup.classList.remove("modal--hidden");
     }
   });
 
-  const modalPost = document.getElementById("newPostPopup");
-  const closePostBtn = document.getElementById("closePostPopup");
-  const addPostBtn = document.getElementById("addPostBtn");
-  const postForm = document.getElementById("newPostForm");
+  // ============================================================
+  // 4. PUBLICACIONES (CRUD)
+  // ============================================================
   const postsContainer = document.getElementById("postsContainer");
+  let posts = [];
+  let renderTimeout = null;
 
-  // Abrir popup al hacer clic en "+ Publicar"
-  addPostBtn.addEventListener("click", function () {
-    modalPost.classList.remove("modal--hidden");
-  });
-
-  // Cerrar popup
-  function closePostModal() {
-    modalPost.classList.add("modal--hidden");
-  }
-  closePostBtn.addEventListener("click", closePostModal);
-  modalPost.addEventListener("click", function (e) {
-    if (e.target === modalPost) closePostModal();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modalPost.classList.contains("modal--hidden")) {
-      closePostModal();
+  function loadPosts() {
+    const saved = localStorage.getItem("posts");
+    if (saved) {
+      posts = JSON.parse(saved);
+    } else {
+      posts = [
+        {
+          id: 1,
+          image: "images/mustang-dark-horse.jpg",
+          caption:
+            "🏎️ Mi nuevo juguete: Mustang Dark Horse 2024. Velocidad, estilo y tecnología. Como debe ser.",
+          likes: 1234,
+          liked: false,
+          date: new Date().toLocaleDateString(),
+        },
+        {
+          id: 2,
+          image: "images/707-car.jpg",
+          caption: "Mi primer amor: Mazda RX-7. Siempre en mi corazón.",
+          likes: 890,
+          liked: false,
+          date: new Date().toLocaleDateString(),
+        },
+      ];
     }
-  });
+    renderPosts();
+  }
 
-  // Enviar nueva publicación
-  postForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+  function savePosts() {
+    localStorage.setItem("posts", JSON.stringify(posts));
+  }
 
-    const fileInput = document.getElementById("postImage");
-    const textInput = document.getElementById("postText");
-    const file = fileInput.files[0];
-    const text = textInput.value.trim() || "Sin descripción";
+  function renderPosts() {
+    // Limpiar timeout anterior para evitar renders múltiples
+    if (renderTimeout) {
+      clearTimeout(renderTimeout);
+      renderTimeout = null;
+    }
+    // Usar requestAnimationFrame para optimizar
+    renderTimeout = requestAnimationFrame(() => {
+      if (posts.length === 0) {
+        postsContainer.innerHTML =
+          '<p style="text-align:center; color:#b39286; padding:30px;">No hay publicaciones aún. ¡Agrega una!</p>';
+        return;
+      }
+      let html = "";
+      for (const post of posts) {
+        const caption = post.caption || "";
+        const truncated =
+          caption.length > 100 ? caption.slice(0, 100) + "..." : caption;
+        const isLong = caption.length > 100;
+        html += `
+          <article class="post" data-id="${post.id}">
+            <div class="post__header">
+              <img src="images/saeyoung_choi.jpg" alt="Avatar" class="post__avatar" />
+              <span class="post__username">@707_luciel</span>
+              <span class="post__date">${post.date || "hace un momento"}</span>
+              <button class="post__delete-btn" aria-label="Eliminar publicación">⋯</button>
+            </div>
+            <div class="post__image">
+              <img src="${post.image}" alt="Publicación" loading="lazy" />
+            </div>
+            <div class="post__content">
+              <p class="post__text ${isLong ? "post__text--truncated" : ""}">
+                ${isLong ? truncated : caption}
+              </p>
+              ${isLong ? `<button class="post__text-more" data-expand="true">Ver más</button>` : ""}
+              <div class="post__actions">
+                <button class="post__like-btn ${post.liked ? "liked" : ""}" data-id="${post.id}">
+                  <img src="images/icons/heart-svgrepo-com.svg" alt="Me gusta" class="icon" />
+                  <span class="like-count">${post.likes}</span>
+                </button>
+                <span>
+                  <img src="images/icons/comment-svgrepo-com.svg" alt="Comentarios" class="icon" />
+                  ${Math.floor(Math.random() * 50)}
+                </span>
+                <span>
+                  <img src="images/icons/arrow-up-right-from-square-svgrepo-com.svg" alt="Compartir" class="icon" />
+                  ${Math.floor(Math.random() * 30)}
+                </span>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+      postsContainer.innerHTML = html;
+      renderTimeout = null;
+    });
+  }
 
-    if (!file) {
-      alert("Por favor selecciona una imagen.");
+  // ============================================================
+  // 5. VALIDAR URL DE IMAGEN
+  // ============================================================
+  function validateImageUrl(url) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = url;
+    });
+  }
+
+  // ============================================================
+  // 6. AÑADIR PUBLICACIÓN (con validación)
+  // ============================================================
+  const addBtn = document.getElementById("addPostBtn");
+  const urlInput = document.getElementById("postImageUrl");
+  const captionInput = document.getElementById("postCaption");
+  const messageEl = document.getElementById("addPostMessage");
+
+  addBtn.addEventListener("click", async function () {
+    const imageUrl = urlInput.value.trim();
+    const caption = captionInput.value.trim();
+    messageEl.textContent = "";
+
+    if (!imageUrl) {
+      messageEl.textContent = "⚠️ Por favor, ingresa una URL de imagen.";
       return;
     }
 
-    // Leer la imagen como URL para mostrarla
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      const imageUrl = event.target.result;
+    // Validar que la imagen existe
+    messageEl.textContent = "⏳ Verificando imagen...";
+    addBtn.disabled = true;
+    const isValid = await validateImageUrl(imageUrl);
+    addBtn.disabled = false;
 
-      // Crear nueva publicación
-      const newPost = document.createElement("section");
-      newPost.className = "post";
-      newPost.innerHTML = `
-        <div class="post__header">
-          <img src="images/saeyoung_choi.jpg" alt="Avatar" class="post__avatar" />
-          <span class="post__username">@707_luciel</span>
-          <span class="post__date">ahora mismo</span>
-        </div>
-        <div class="post__image">
-          <img src="${imageUrl}" alt="Nueva publicación" />
-        </div>
-        <div class="post__content">
-          <p class="post__text">${text}</p>
-          <div class="post__actions">
-            <span><img src="images/icons/heart-svgrepo-com.svg" alt="Me gusta" class="icon" /> 0</span>
-            <span><img src="images/icons/comment-svgrepo-com.svg" alt="Comentarios" class="icon" /> 0</span>
-            <span><img src="images/icons/arrow-up-right-from-square-svgrepo-com.svg" alt="Compartir" class="icon" /> 0</span>
-          </div>
-        </div>
-      `;
+    if (!isValid) {
+      messageEl.textContent =
+        "❌ La imagen no se pudo cargar. Verifica la URL.";
+      return;
+    }
 
-      // Insertar al inicio del contenedor
-      postsContainer.prepend(newPost);
-
-      // Resetear formulario y cerrar popup
-      postForm.reset();
-      closePostModal();
+    // Agregar publicación
+    const newPost = {
+      id: Date.now(),
+      image: imageUrl,
+      caption: caption || "Sin descripción",
+      likes: 0,
+      liked: false,
+      date: new Date().toLocaleDateString(),
     };
-
-    reader.readAsDataURL(file);
+    posts.unshift(newPost);
+    savePosts();
+    renderPosts();
+    urlInput.value = "";
+    captionInput.value = "";
+    messageEl.textContent = "✅ Publicación agregada correctamente.";
+    setTimeout(() => (messageEl.textContent = ""), 3000);
   });
+
+  // ============================================================
+  // 7. ELIMINAR, LIKE Y VER MÁS (delegación)
+  // ============================================================
+  postsContainer.addEventListener("click", function (e) {
+    // Eliminar
+    const deleteBtn = e.target.closest(".post__delete-btn");
+    if (deleteBtn) {
+      const postElement = deleteBtn.closest(".post");
+      const id = parseInt(postElement.dataset.id);
+      if (confirm("¿Eliminar esta publicación?")) {
+        posts = posts.filter((p) => p.id !== id);
+        savePosts();
+        renderPosts();
+      }
+      return;
+    }
+
+    // Like
+    const likeBtn = e.target.closest(".post__like-btn");
+    if (likeBtn) {
+      const id = parseInt(likeBtn.dataset.id);
+      const post = posts.find((p) => p.id === id);
+      if (post) {
+        post.liked = !post.liked;
+        post.likes += post.liked ? 1 : -1;
+        savePosts();
+        renderPosts();
+      }
+      return;
+    }
+
+    // Ver más
+    const moreBtn = e.target.closest(".post__text-more");
+    if (moreBtn) {
+      const postElement = moreBtn.closest(".post");
+      const textEl = postElement.querySelector(".post__text");
+      const isExpanded = textEl.classList.contains("post__text--expanded");
+      if (isExpanded) {
+        textEl.classList.remove("post__text--expanded");
+        moreBtn.textContent = "Ver más";
+      } else {
+        textEl.classList.add("post__text--expanded");
+        moreBtn.textContent = "Ver menos";
+      }
+    }
+  });
+
+  // ============================================================
+  // 8. INICIALIZAR
+  // ============================================================
+  loadPosts();
 });

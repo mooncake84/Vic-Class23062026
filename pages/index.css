@@ -1,7 +1,5 @@
-/* ===== IMPORTS ===== */
 @import url("../vendor/normalize.css");
 @import url("../fonts.css");
-@import url("../blocks/reset.css");
 @import url("../blocks/top.css");
 @import url("../blocks/nav.css");
 @import url("../blocks/main.css");
@@ -9,21 +7,20 @@
 @import url("../blocks/story.css");
 @import url("../blocks/post.css");
 @import url("../blocks/popup.css");
-@import url("../blocks/user-info.css"); /* opcional */
+@import url("../blocks/footer.css");
 
-/* ===== GLOBALES ===== */
+/* ===== ESTILOS GLOBALES ===== */
 body {
-  max-width: 700px;
+  max-width: 1000px;
   min-width: 320px;
   margin: 0 auto;
   background-color: #fdf6f0;
   font-family: "Oswald", "Segoe UI", sans-serif;
-  padding: 0 15px;
+  padding: 0 20px;
   box-sizing: border-box;
   color: #4a3f3a;
 }
 
-/* Iconos SVG globales */
 .icon {
   width: 24px;
   height: 24px;
@@ -36,10 +33,82 @@ body {
   height: 32px;
 }
 
-/* Contenedor de publicaciones */
-#postsContainer {
+/* ===== SECCIÓN AGREGAR PUBLICACIÓN ===== */
+.add-post-section {
+  background: #fffbf8;
+  border-radius: 30px;
+  border: 1px solid #f5e3df;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.add-post__title {
+  font-weight: 400;
+  color: #7a5a5a;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+}
+.add-post__form {
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.add-post__input {
+  flex: 1;
+  min-width: 150px;
+  padding: 8px 12px;
+  border: 1px solid #f5e3df;
+  border-radius: 20px;
+  background: #fffcf9;
+  font-size: 0.9rem;
+}
+.add-post__input:focus {
+  outline: none;
+  border-color: #eab4b4;
+}
+.add-post__btn {
+  background-color: #f4c2c2;
+  color: #5a3e3e;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 300;
+  transition: background 0.2s;
+}
+.add-post__btn:hover {
+  background-color: #eab4b4;
+}
+.add-post__message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #d68b8b;
+  min-height: 20px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  body {
+    padding: 0 40px;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+  }
+  .profile {
+    grid-column: 1 / 2;
+  }
+  .add-post-section {
+    grid-column: 1 / 2;
+  }
+  .posts-section {
+    grid-column: 1 / 2;
+  }
+}
+@media (max-width: 767px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
 }
